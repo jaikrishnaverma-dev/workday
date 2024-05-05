@@ -130,7 +130,6 @@ const Home = () => {
             ></span>
           </div>
           <div
-            className="w-100"
             style={{
               display: "flex",
               justifyContent: "center",
@@ -161,7 +160,6 @@ const Home = () => {
       </Container>
       <Modal
         open={modal.open}
-        style={{maxWidth:"calc(100% - 30px)"}}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
