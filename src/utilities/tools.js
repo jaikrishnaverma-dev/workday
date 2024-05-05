@@ -11,9 +11,14 @@ export async function postReq(apiurl, body, header={}) {
     
     if (res.ok) {
     res = await res.text();
-    return res;
+    return {
+        message: "",
+        success: true,
+        data:JSON.parse(res)
+    } 
     }
     } catch (er) {
+        console.log({er});
     return {
     message: "Something went wrong on client side.",
     success: false,

@@ -7,13 +7,18 @@ import { postReq } from "../utilities/tools";
 const Navbar = () => {
   const [value, setValue] = React.useState([]);
 
-  const fetchdata= async ()=>{
-const data = postReq();
+ const fetchdata= async ()=>{
+     const data = await postReq("https://api.weekday.technology/adhoc/getSampleJdJSON");
+     if(data.success){
+      const{totalCount,jdList}= data
 
+     }
+console.log({data});
   }
   useEffect(()=>{
-
+    fetchdata()
   },[])
+  
   return (
     <div style={{ margin: 50 }}>
       <div
