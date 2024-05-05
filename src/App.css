@@ -1,3 +1,177 @@
 .MuiAutocomplete-input.MuiAutocomplete-inputFocused.css-nxo287-MuiInputBase-input-MuiOutlinedInput-input{
     border-right:1.5px solid rgb(161, 161, 161);
 }
+.cards-wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap:10px
+}
+.cards-wrapper>div{
+    width: 100%;
+}
+.w-100{
+    width: 100%;
+}
+
+.cards-wrapper .card{
+    width: calc(30% - 20px);
+    max-width: 350px;
+    padding: 20px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+.card_actions{
+    margin-top: 15px;
+}
+.card_timing{
+    display: inline;
+    padding: 4px 6px;
+    box-shadow: rgba(6, 6, 6, 0.05) 0px 2px 6px 0px;
+    border-radius: 10px;
+    font-size: 9px;
+    border: 1px solid rgb(230, 230, 230);
+}
+.card_company{
+    margin: 15px 0px;
+    display: flex;
+    gap: 15px;
+}
+.card_company_logo{
+    width: 60px;
+    height: 60px;
+}
+.card_company_details{
+display: flex;
+flex-direction: column;
+gap:2px;
+}
+.card_company_details *{
+    margin: 0px;
+    padding: 0px;
+}
+.card_company_details>h3{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+.card_jobrole{
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+    margin: 0px;
+}
+.card_joblocation{
+    font-size: 11px;
+    font-weight: 500;
+    margin-top: 5px;
+}
+.about_heading{
+    margin: 0px;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 500;
+}
+.card_salary{
+    
+    font-size: 14px !important;
+}
+.card_experience *{
+margin: 0px;
+padding: 0px;
+margin-top: 5px;
+}
+.card_experience h5{
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+    color: #8b8b8b;
+}
+.card_experience h2{
+    font-size: 14px;
+    line-height: 1.5;
+    font-weight: 400;
+}
+.btn{
+    width: 100%;
+    text-decoration: none;
+    box-sizing: border-box;
+    display: flex;
+    height: 45px;
+    align-items: center;
+    justify-content: center;
+    border-radius:8px;
+    gap:10px;
+    margin: 10px 0px;
+    font-weight: 500;
+    padding: 8px 18px;
+    font-size: 1.1rem;
+    border: none;
+    cursor: pointer;
+}
+
+.card_about_wrapper{
+    max-height: 280px;
+    overflow: hidden;
+    margin-bottom: 15px; 
+    position: relative;
+    
+}
+.show_more{
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    width: 100%;
+    top: 0px;
+    height: 280px;
+    background: linear-gradient(to bottom, transparent 0%, white 100%);
+}
+.show_more>button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: blue;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 16px;
+    height: 30px;
+    
+    
+}
+
+.card_apply{
+        background-color: rgb(85, 239, 196);
+        color: rgb(0, 0, 0);
+}
+.card_referral{
+    background-color: rgb(101 94 255);
+    color: white;
+}
+
+.circle{
+    height: 18px;
+    width: 18px;
+    color: white !important;
+    border-radius: 50%;
+    background-color: rgb(223, 223, 223);
+    border: 2px solid white;
+    padding: 4px;
+}
+.circle>svg{
+    color: white !important;
+    filter: invert(1);
+}
+.about_description{
+    margin-top: 5px ;
+}
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
