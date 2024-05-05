@@ -1,5 +1,5 @@
 /**
- * For make POST API call 
+ * For make POST API call
  */
 export async function postReq(apiurl, body, header = {}) {
   try {
@@ -89,7 +89,6 @@ export const initialFilterState = {
     ],
     key: "minExp",
     value: [],
-    filter_callback: (el, data) => el?.minExp == data,
   },
 
   Company: {
@@ -297,8 +296,6 @@ export const initialFilterState = {
     ],
     key: "companyName",
     value: [],
-    filter_callback: (el, data) =>
-      el?.companyName?.toLowerCase().includes(data?.toLowerCase()),
   },
 
   Location: {
@@ -326,8 +323,6 @@ export const initialFilterState = {
     ],
     key: "location",
     value: [],
-    filter_callback: (el, data) =>
-      el?.location?.toLowerCase().includes(data?.toLowerCase()),
   },
   Tech_Stack: {
     options: [
@@ -337,8 +332,6 @@ export const initialFilterState = {
     ],
     key: false,
     value: [],
-    filter_callback: (el, data) =>
-      el?.jobDetailsFromCompany?.toLowerCase()?.includes(data?.toLowerCase()),
   },
   Role: {
     options: [
@@ -365,8 +358,6 @@ export const initialFilterState = {
     ],
     key: "jobRole",
     value: [],
-    filter_callback: (el, data) =>
-      el?.jobRole?.toLowerCase()?.includes(data?.toLowerCase()),
   },
   Min_Base_Pay: {
     options: [
@@ -405,6 +396,19 @@ export const initialFilterState = {
     ],
     key: "minJdSalary",
     value: [],
-    filter_callback: (el, data) => data <= el?.minJdSalary,
   },
+};
+
+/**
+ * filter callbacks
+ */
+export const filter_callbacks = {
+  minExp: (el, data) => el?.minExp == data,
+  companyName: (el, data) =>
+    el?.companyName?.toLowerCase().includes(data?.toLowerCase()),
+  location: (el, data) =>
+    el?.location?.toLowerCase().includes(data?.toLowerCase()),
+  jobRole: (el, data) =>
+    el?.jobRole?.toLowerCase()?.includes(data?.toLowerCase()),
+  minJdSalary: (el, data) => data <= el?.minJdSalary,
 };

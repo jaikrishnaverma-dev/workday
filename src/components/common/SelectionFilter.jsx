@@ -4,7 +4,7 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export default function SelectionFilter(props) {
-  
+
   const {options,label,placeholder,value,setValue}=props
  
   return (
@@ -17,11 +17,12 @@ export default function SelectionFilter(props) {
         setValue([...newValue]);
       }}
       options={options}
-      getOptionLabel={(option) => option.label}
+      getOptionLabel={(option) => option.label.toString()}
       renderTags={(tagValue, getTagProps) =>
         tagValue.map((option, index) => (
           <Chip
-            label={option.label}
+             key={option.label.toString()+index}
+            label={option.label.toString()}
             {...getTagProps({ index })}
           />
         ))

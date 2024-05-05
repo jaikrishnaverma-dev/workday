@@ -5,6 +5,7 @@ import JobCards from "./Home/JobCards";
 import { useDispatch, useSelector } from "react-redux";
 import About from "./common/About";
 import { fetchJobs } from "../features/mainSlice";
+import { filter_callbacks } from "../utils/tools";
 const style = {
   position: "absolute",
   top: "50%",
@@ -24,9 +25,7 @@ const Home = () => {
     mainSlice: { jobs, loading, totalCount },
     filterSlice,
   } = useSelector((data) => data);
-  const triggerElement = useRef(null);
   const [triggerdReq, setTriggredReq] = useState(0);
-  const dispatch = useDispatch();
   const [state, setstate] = useState({
     limit: 10,
     offset: 0,
@@ -35,8 +34,16 @@ const Home = () => {
     open: false,
     job: {},
   });
+  const triggerElement = useRef(null);
+  const dispatch = useDispatch();
+
+  //to open modal for perticular job
   const handleOpen = (job) => setModal({ open: true, job: job });
+
+  // to close modal
   const handleClose = () => setModal({ open: false, job: {} });
+
+  //load more call with increment in offset
   const loadMore = () => {
     setstate((prev) => {
       const offset = jobs.length ? prev.offset + 10 : 0;
@@ -50,16 +57,19 @@ const Home = () => {
     });
   };
 
+  // trigger with intersection and make api call
   useEffect(() => {
     if (triggerdReq !== 0 && (jobs.length == 0 || !loading)) {
       loadMore();
     }
   }, [triggerdReq]);
 
+  /**
+   * logic to trigger infinity api call when user reach to end of cards list for infinity scroll 
+   */
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
-        console.log({ entries });
         if (entries[0].isIntersecting) {
           setTriggredReq((prev) => !prev);
         }
@@ -78,6 +88,10 @@ const Home = () => {
     };
   }, [triggerElement]);
 
+  /**
+   * if filter available then we have to apply that on our data by this logic
+   * used useMemo Hook to prevent unnecessary re-rending
+   */
   const filterdJobList = useMemo(() => {
     return jobs.filter((item) => {
       let flag = [];
@@ -85,7 +99,7 @@ const Home = () => {
         if (filter?.key && filter.value.length) {
           flag.push(false);
           const data = filter.value.find((check) =>
-            filter.filter_callback(item, check.val)
+            filter_callbacks[filter.key](item, check.val)
           );
           flag[flag.length - 1] = data ? true : false;
         }

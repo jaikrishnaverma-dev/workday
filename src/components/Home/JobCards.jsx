@@ -52,7 +52,7 @@ export default function JobCards({ job, handleShowMore }) {
         >
           <div className="circle">
             <svg
-              class="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-13y7ul3"
+              className="MuiSvgIcon-root MuiSvgIcon-fontSizeMedium MuiAvatar-fallback css-13y7ul3"
               focusable="false"
               aria-hidden="true"
               viewBox="0 0 24 24"
