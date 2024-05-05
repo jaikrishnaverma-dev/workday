@@ -1,15 +1,14 @@
-import React, { useState } from "react";
-import { tempOptions } from "../utilities/temp";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { initialFilterState, noRef, toTitle } from "../utilities/tools";
-import SelectionFilter from "./selections/SelectionFilter";
-import { setFilter } from "../redux/filterSlice";
+import {toTitle } from "../../utils/tools";
+import SelectionFilter from "../common/SelectionFilter";
+import { setFilter } from "../../features/filterSlice";
 
 const Navbar = () => {
-  const {  filterSlice } = useSelector((data) => data);
-  const dispatch=useDispatch()
+  const { filterSlice } = useSelector((data) => data);
+  const dispatch = useDispatch();
   const applyFilter = (key, newval) => {
-    dispatch(setFilter({key,value:newval}))
+    dispatch(setFilter({ key, value: newval }));
   };
 
   return (

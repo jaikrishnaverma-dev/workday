@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { postReq } from "../utilities/tools";
+import { postReq } from "../utils/tools";
 const initialState = {
   jobs: [],
   loading: true,

@@ -1,3 +1,6 @@
+/**
+ * For make POST API call 
+ */
 export async function postReq(apiurl, body, header = {}) {
   try {
     let res = await fetch(apiurl, {
@@ -33,9 +36,9 @@ export async function postReq(apiurl, body, header = {}) {
 export const noRef = (obj) => {
   return JSON.parse(JSON.stringify(obj));
 };
-export const toTitle=(str)=>{
-return str.split("_").join(" ")
-}
+export const toTitle = (str) => {
+  return str.split("_").join(" ");
+};
 
 /**
  * filter rules
@@ -84,9 +87,9 @@ export const initialFilterState = {
         val: 9,
       },
     ],
-    key:'minExp',
+    key: "minExp",
     value: [],
-    filter_callback:(el,data)=>el?.minExp == data
+    filter_callback: (el, data) => el?.minExp == data,
   },
 
   Company: {
@@ -292,9 +295,10 @@ export const initialFilterState = {
         val: "LinkedIn",
       },
     ],
-    key:'companyName',
+    key: "companyName",
     value: [],
-    filter_callback:(el,data)=>el?.companyName?.toLowerCase().includes(data?.toLowerCase())
+    filter_callback: (el, data) =>
+      el?.companyName?.toLowerCase().includes(data?.toLowerCase()),
   },
 
   Location: {
@@ -320,9 +324,10 @@ export const initialFilterState = {
         val: "bangalore",
       },
     ],
-    key:'location',
+    key: "location",
     value: [],
-    filter_callback:(el,data)=>el?.location?.toLowerCase().includes(data?.toLowerCase())
+    filter_callback: (el, data) =>
+      el?.location?.toLowerCase().includes(data?.toLowerCase()),
   },
   Tech_Stack: {
     options: [
@@ -330,9 +335,10 @@ export const initialFilterState = {
       { label: "Javascript", option: "javascript" },
       { label: "java", option: "java" },
     ],
-    key:false,
+    key: false,
     value: [],
-    filter_callback:(el,data)=>el?.jobDetailsFromCompany?.toLowerCase()?.includes(data?.toLowerCase())
+    filter_callback: (el, data) =>
+      el?.jobDetailsFromCompany?.toLowerCase()?.includes(data?.toLowerCase()),
   },
   Role: {
     options: [
@@ -357,9 +363,10 @@ export const initialFilterState = {
         val: "backend",
       },
     ],
-    key:'jobRole',
+    key: "jobRole",
     value: [],
-    filter_callback:(el,data)=>el?.jobRole?.toLowerCase()?.includes(data?.toLowerCase())
+    filter_callback: (el, data) =>
+      el?.jobRole?.toLowerCase()?.includes(data?.toLowerCase()),
   },
   Min_Base_Pay: {
     options: [
@@ -396,8 +403,8 @@ export const initialFilterState = {
         val: 70,
       },
     ],
-    key:"minJdSalary",
+    key: "minJdSalary",
     value: [],
-    filter_callback:(el,data)=>data <= el?.minJdSalary
+    filter_callback: (el, data) => data <= el?.minJdSalary,
   },
 };

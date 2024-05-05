@@ -1,12 +1,10 @@
 import React, { useEffect, useMemo, useRef, useState } from "react";
-import Navbar from "./Navbar";
+import Navbar from "./Home/Navbar";
 import { Box, Button, Container, Modal } from "@mui/material";
-import JobCards from "./JobCards";
+import JobCards from "./Home/JobCards";
 import { useDispatch, useSelector } from "react-redux";
-import About from "./About";
-import RefreshIcon from "@mui/icons-material/Refresh";
-import { fetchJobs } from "../redux/mainSlice";
-import { noRef } from "../utilities/tools";
+import About from "./common/About";
+import { fetchJobs } from "../features/mainSlice";
 const style = {
   position: "absolute",
   top: "50%",
@@ -51,14 +49,7 @@ const Home = () => {
       return { limit: 10, offset };
     });
   };
-  // const fetchdata = async () => {
-  //   dispatch(
-  //     fetchJobs({
-  //       limit: state.limit,
-  //       offset: state.offset,
-  //     })
-  //   );
-  // };
+
   useEffect(() => {
     if (triggerdReq !== 0 && (jobs.length == 0 || !loading)) {
       loadMore();
@@ -68,11 +59,12 @@ const Home = () => {
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
+        console.log({ entries });
         if (entries[0].isIntersecting) {
           setTriggredReq((prev) => !prev);
         }
       },
-      { threshold: 1 }
+      { threshold: 0.3 }
     );
 
     if (triggerElement.current) {
@@ -111,8 +103,13 @@ const Home = () => {
             <JobCards key={job?.jdUid} job={job} handleShowMore={handleOpen} />
           ))}
         </div>
+        <div style={{ position: "relative" }}>
+          <span
+            style={{ position: "absolute", top: "50%" }}
+            ref={triggerElement}
+          ></span>
+        </div>
         <div
-          ref={triggerElement}
           className="w-100"
           style={{
             display: "flex",
@@ -121,7 +118,7 @@ const Home = () => {
             marginBottom: "15px",
           }}
         >
-          {totalCount == jobs.length && totalCount !== 0 ? (
+          {totalCount === jobs.length && totalCount !== 0 ? (
             <>NO MORE DATA AVAILABLE</>
           ) : (
             <>
@@ -131,7 +128,6 @@ const Home = () => {
                   variant="text"
                   onClick={loadMore}
                   disabled={loading}
-                  // startIcon={loading ? "" : <RefreshIcon />}
                 >
                   {loading ? "Loading..." : "Please Wait..."}
                 </Button>

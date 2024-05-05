@@ -1,7 +1,6 @@
 import React from "react";
 
 const About = ({ job }) => {
-    console.log({job});
   return (
     <div className="w-100 about">
       <h5 className="about_heading">About Company</h5>

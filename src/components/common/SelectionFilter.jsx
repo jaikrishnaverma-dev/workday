@@ -4,9 +4,9 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
 export default function SelectionFilter(props) {
+  
   const {options,label,placeholder,value,setValue}=props
  
-
   return (
     <Autocomplete
       multiple

@@ -1,6 +1,6 @@
 import { Provider } from "react-redux";
 import "./App.css";
-import { store } from "./redux/store";
+import { store } from "./features/store";
 import Home from "./components/Home";
 
 function App() {

@@ -1,5 +1,5 @@
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { initialFilterState, noRef, postReq } from "../utilities/tools";
+import { createSlice } from "@reduxjs/toolkit";
+import { initialFilterState } from "../utils/tools";
 
 
 const filterSlice = createSlice({
@@ -9,8 +9,7 @@ const filterSlice = createSlice({
     setFilter(state,action){
         state[action.payload.key].value = action.payload.value;
     }
-  },
-
+  }
 });
 export const {setFilter} = filterSlice.actions;
 export default filterSlice.reducer;
