@@ -3,24 +3,24 @@ import React, { useEffect } from "react";
 import FixedTags from "./selections/Roles";
 import { tempOptions } from "../utilities/temp";
 import { postReq } from "../utilities/tools";
+import { useDispatch } from "react-redux";
+import { fetchJobs } from "../redux/mainSlice";
 
 const Navbar = () => {
+  const dispatch =useDispatch()
   const [value, setValue] = React.useState([]);
 
  const fetchdata= async ()=>{
-     const data = await postReq("https://api.weekday.technology/adhoc/getSampleJdJSON");
-     if(data.success){
-      const{totalCount,jdList}= data
-
-     }
-console.log({data});
+  dispatch(fetchJobs({
+    "limit": 10,
+    "offset": 0
+   }))
   }
   useEffect(()=>{
     fetchdata()
   },[])
-  
+
   return (
-    <div style={{ margin: 50 }}>
       <div
         style={{
           display: "flex",
@@ -42,7 +42,7 @@ console.log({data});
           </div>
         ))}
       </div>
-    </div>
+
   );
 };
 
