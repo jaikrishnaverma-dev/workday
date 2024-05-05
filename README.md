@@ -1,70 +1,78 @@
-# Getting Started with Create React App
+# Workday For Weekday
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a React-based web application that serves as a candidate application platform. It allows users to view job listings, filter jobs based on various criteria, and implements infinite scroll for a seamless browsing experience.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Job Cards**: Each job listing is displayed as a card containing the job title, company name, location, job description (limited to a certain number of characters with an option to expand), required experience, and an apply button/link.
+- **Filters**: Users can refine the job listings based on minimum experience, company name, location, remote/on-site work, tech stack, role, and minimum base pay.
+- **Infinite Scroll**: The platform loads additional job listings automatically as the user scrolls down the page, without requiring them to click a "Load More" button.
+- **Responsive Design**: The platform is designed to work well on different screen sizes, including mobile devices.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **ReactJS**: The core library for building the user interface.
+- **Redux Toolkit**: A modern Redux library for managing application state.
+- **Material-UI**: A popular React UI library for implementing Material Design components.
+- **Custom CSS**: Custom CSS styles for additional styling and customization.
+- **Custom Logic**: Custom logic implementations for handling filters, infinite scroll, and other functionalities.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+1. Clone the repository:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+git clone https://github.com/jaikrishnaverma-dev/workday.git
+```
 
-### `npm run build`
+2. Navigate to the project directory:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+cd workday
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+3. Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```
+npm install
+```
 
-### `npm run eject`
+4. Start the development server:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+The application should now be running at `http://localhost:3000`.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Project Structure
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- `src/components`: Contains reusable React components used throughout the application.
+- `src/features`: Contains Redux slices and related files for managing application state.
+- `src/utils`: Contains utility functions used across the application.
+- `src/App.css`: Contains custom CSS styles for components and layout.
 
-## Learn More
+## Redux Slices
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+The project utilizes Redux Toolkit for state management and includes the following slices:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **mainSlice**: Responsible for managing the job listings and related data.
+- **filterSlice**: Handles the state and logic for filtering job listings based on various criteria.
 
-### Code Splitting
+## Material-UI Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+The project utilizes Material-UI components for consistent styling and a user-friendly interface. The job cards and filter components are built using Material-UI components and styles.
 
-### Analyzing the Bundle Size
+## Custom Logic
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+In addition to the provided libraries and frameworks, the project includes custom logic for handling:
 
-### Making a Progressive Web App
+- Infinite scroll implementation
+- Filtering job listings based on multiple criteria
+- Handling null values in the API response
+- Expanding/collapsing job descriptions
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Usage
 
-### Advanced Configuration
+Upon launching the application, users will see a list of job cards displayed on the screen. They can use the filters on the left sidebar to refine the job listings based on their preferences. As the user scrolls down, more job listings will be loaded automatically through the infinite scroll feature.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
