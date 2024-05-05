@@ -3,9 +3,10 @@
 }
 .cards-wrapper{
     display: flex;
+    margin: 20px 0px;
     flex-wrap: wrap;
-    justify-content: space-between;
-    gap:10px
+    justify-content: start;
+    gap:30px
 }
 .cards-wrapper>div{
     width: 100%;
@@ -15,11 +16,9 @@
 }
 
 .cards-wrapper .card{
-    width: calc(30% - 20px);
+    width: calc(30% - 30px);
     max-width: 350px;
     padding: 20px;
-    margin-top: 10px;
-    margin-bottom: 10px;
     border-radius: 20px;
     box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
 }
@@ -174,4 +173,39 @@ margin-top: 5px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+/* Mobile Devices */
+@media only screen and (max-width: 767px) {
+    .cards-wrapper{
+        justify-content: center;
+    }
+    .cards-wrapper .card{
+        width: calc(100%);
+        max-width: 350px;
+    }
+}
+
+/* Tablet Devices */
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+    .cards-wrapper{
+        justify-content: center;
+    }
+    .cards-wrapper .card{
+        width: calc(50% - 30px);
+        max-width: 350px;
+    }
+}
+
+/* Desktop Devices */
+@media only screen and (min-width: 1024px) {
+    /* Styles for desktop devices */
+    body {
+        font-size: 18px;
+    }
+    .container {
+        width: 70%;
+        margin: 0 auto;
+    }
+    /* Add more styles as needed */
 }

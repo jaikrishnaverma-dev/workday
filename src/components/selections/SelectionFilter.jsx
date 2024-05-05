@@ -3,7 +3,7 @@ import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 
-export default function FilterSelection(props) {
+export default function SelectionFilter(props) {
   const {options,label,placeholder,value,setValue}=props
  
 
@@ -14,18 +14,15 @@ export default function FilterSelection(props) {
       id="fixed-tags-demo"
       value={value}
       onChange={(event, newValue) => {
-        setValue([
-          ...newValue
-        ]);
+        setValue([...newValue]);
       }}
       options={options}
-      getOptionLabel={(option) => option.title}
+      getOptionLabel={(option) => option.label}
       renderTags={(tagValue, getTagProps) =>
         tagValue.map((option, index) => (
           <Chip
-            label={option.title}
+            label={option.label}
             {...getTagProps({ index })}
-            // disabled={fixedOptions.indexOf(option) !== -1}
           />
         ))
       }
@@ -36,4 +33,4 @@ export default function FilterSelection(props) {
   );
 }
 
-// Top 100 films as rated by IMDb users. http://www.imdb.com/chart/top
+

@@ -3,6 +3,7 @@ import { postReq } from "../utilities/tools";
 const initialState = {
   jobs: [],
   loading: true,
+  totalCount:0,
   message: "",
 };
 export const fetchJobs = createAsyncThunk("jobs/fetchData", async (payload) => {
@@ -22,8 +23,7 @@ const mainSlice = createSlice({
         state.loading = true;
       })
       .addCase(fetchJobs.fulfilled, (state, action) => {
-        console.log({P:action.payload});
-        state.jobs = action.payload.data.jdList;
+        state.jobs = [...state.jobs,...action.payload.data.jdList];
         state.totalCount = action.payload.data.totalCount;
         state.loading = false;
       })

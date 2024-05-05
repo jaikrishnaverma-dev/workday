@@ -1,48 +1,38 @@
-import { Grid } from "@mui/material";
-import React, { useEffect } from "react";
-import FixedTags from "./selections/Roles";
+import React, { useState } from "react";
 import { tempOptions } from "../utilities/temp";
-import { postReq } from "../utilities/tools";
-import { useDispatch } from "react-redux";
-import { fetchJobs } from "../redux/mainSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { initialFilterState, noRef, toTitle } from "../utilities/tools";
+import SelectionFilter from "./selections/SelectionFilter";
+import { setFilter } from "../redux/filterSlice";
 
 const Navbar = () => {
-  const dispatch =useDispatch()
-  const [value, setValue] = React.useState([]);
-
- const fetchdata= async ()=>{
-  dispatch(fetchJobs({
-    "limit": 10,
-    "offset": 0
-   }))
-  }
-  useEffect(()=>{
-    fetchdata()
-  },[])
+  const {  filterSlice } = useSelector((data) => data);
+  const dispatch=useDispatch()
+  const applyFilter = (key, newval) => {
+    dispatch(setFilter({key,value:newval}))
+  };
 
   return (
-      <div
-        style={{
-          display: "flex",
-          alignItems: "center",
-          gap: "10px",
-          justifyContent: "start",
-          flexWrap: "wrap",
-        }}
-      >
-        {[2, 3, 4, 67, 7, 8].map((el, i) => (
-          <div style={{ minWidth: "200px" }}>
-            <FixedTags
-              label={"Jai"}
-              placeholder={"tempOptions"}
-              options={tempOptions}
-              value={value}
-              setValue={setValue}
-            />
-          </div>
-        ))}
-      </div>
-
+    <div
+      style={{
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "start",
+        flexWrap: "wrap",
+      }}
+    >
+      {Object.entries(filterSlice).map(([key, val]) => (
+        <div style={{ minWidth: "190px" }} key={key}>
+          <SelectionFilter
+            label={toTitle(key)}
+            placeholder={toTitle(key)}
+            options={val.options}
+            value={val.value}
+            setValue={(newval) => applyFilter(key, newval)}
+          />
+        </div>
+      ))}
+    </div>
   );
 };
 
