@@ -11,6 +11,7 @@ const style = {
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
+  minWidth: 300,
   maxWidth: 650,
   height: 500,
   bgcolor: "background.paper",
@@ -65,7 +66,7 @@ const Home = () => {
   }, [triggerdReq]);
 
   /**
-   * logic to trigger infinity api call when user reach to end of cards list for infinity scroll 
+   * logic to trigger infinity api call when user reach to end of cards list for infinity scroll
    */
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -109,50 +110,55 @@ const Home = () => {
   }, [jobs, filterSlice]);
 
   return (
-    <Container maxWidth="lg" sx={{ padding: "30px 0px" }}>
-      <Navbar />
-      <div>
-        <div className="cards-wrapper">
-          {filterdJobList.map((job) => (
-            <JobCards key={job?.jdUid} job={job} handleShowMore={handleOpen} />
-          ))}
+    <>
+      <Container maxWidth="lg" sx={{ padding: "30px 0px" }}>
+        <Navbar />
+        <div>
+          <div className="cards-wrapper">
+            {filterdJobList.map((job) => (
+              <JobCards
+                key={job?.jdUid}
+                job={job}
+                handleShowMore={handleOpen}
+              />
+            ))}
+          </div>
+          <div style={{ position: "relative" }}>
+            <span
+              style={{ position: "absolute", top: "50%" }}
+              ref={triggerElement}
+            ></span>
+          </div>
+          <div
+            className="w-100"
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              padding: "20px",
+              marginBottom: "15px",
+            }}
+          >
+            {totalCount === jobs.length && totalCount !== 0 ? (
+              <>NO MORE DATA AVAILABLE</>
+            ) : (
+              <>
+                {filterdJobList.length ? (
+                  <Button
+                    sx={{ color: "black" }}
+                    variant="text"
+                    onClick={loadMore}
+                    disabled={loading}
+                  >
+                    {loading ? "Loading..." : "Please Wait..."}
+                  </Button>
+                ) : (
+                  <> {loading ? "Loading..." : "No Search Found!"}</>
+                )}
+              </>
+            )}
+          </div>
         </div>
-        <div style={{ position: "relative" }}>
-          <span
-            style={{ position: "absolute", top: "50%" }}
-            ref={triggerElement}
-          ></span>
-        </div>
-        <div
-          className="w-100"
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            padding: "20px",
-            marginBottom: "15px",
-          }}
-        >
-          {totalCount === jobs.length && totalCount !== 0 ? (
-            <>NO MORE DATA AVAILABLE</>
-          ) : (
-            <>
-              {filterdJobList.length ? (
-                <Button
-                  sx={{ color: "black" }}
-                  variant="text"
-                  onClick={loadMore}
-                  disabled={loading}
-                >
-                  {loading ? "Loading..." : "Please Wait..."}
-                </Button>
-              ) : (
-                <> {loading ? "Loading..." : "No Search Found!"}</>
-              )}
-            </>
-          )}
-        </div>
-      </div>
-
+      </Container>
       <Modal
         open={modal.open}
         onClose={handleClose}
@@ -163,7 +169,7 @@ const Home = () => {
           {Object.keys(modal.job).length > 0 ? <About job={modal.job} /> : "NA"}
         </Box>
       </Modal>
-    </Container>
+    </>
   );
 };
 
